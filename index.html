@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Amigo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        form, .emergency-section {
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Anonymous Amigo</h1>
+    <form id="registerForm">
+        <h2>Register</h2>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="gender" placeholder="Gender (Male/Female)" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="address" placeholder="Address" required>
+        <input type="file" id="photo" required>
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="emergency-section" id="emergencySection" style="display:none;">
+        <h2>Emergency</h2>
+        <button id="alertButton">Send Emergency Alert</button>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value.toLowerCase();
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+
+            // Mock registration
+            alert(`Welcome ${name}! Registration successful.`);
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('emergencySection').style.display = 'block';
+
+            // Gender-specific behavior
+            if (gender === 'female') {
+                alert('Toll-Free Number: 1800-123-4567');
+            }
+        });
+
+        document.getElementById('alertButton').addEventListener('click', function() {
+            alert('Emergency alert sent! Nearby users and authorities notified.');
+        });
+    </script>
+</body>
+</html>
